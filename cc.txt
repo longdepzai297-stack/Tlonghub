@@ -1,0 +1,70 @@
+local playerHWID = game:GetService("RbxAnalyticsService"):GetClientId()
+local REPLIT_URL = "https://key-generator-1--longnekma.replit.app" -- THAY BẰNG LINK .APP SAU KHI PUBLISH
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local KeyInput = Instance.new("TextBox")
+local GetKeyBtn = Instance.new("TextButton")
+
+-- [[ GIAO DIỆN AUTH ]]
+ScreenGui.Parent = game:GetService("CoreGui")
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+MainFrame.Size = UDim2.new(0, 300, 0, 150)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+KeyInput.Parent = MainFrame
+KeyInput.PlaceholderText = "Nhập Key vào đây..."
+KeyInput.Size = UDim2.new(0.8, 0, 0, 35)
+KeyInput.Position = UDim2.new(0.1, 0, 0.2, 0)
+
+GetKeyBtn.Parent = MainFrame
+GetKeyBtn.Text = "LẤY KEY (LINK4M)"
+GetKeyBtn.Size = UDim2.new(0.8, 0, 0, 35)
+GetKeyBtn.Position = UDim2.new(0.1, 0, 0.6, 0)
+GetKeyBtn.BackgroundColor3 = Color3.fromRGB(0, 162, 255)
+
+-- [[ MENU CHÍNH SILENT ASSASSIN ]]
+function OpenMainHub()
+    local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+    local Window = Rayfield:CreateWindow({Name = "TLONG HUB | SILENT ASSASSIN"})
+    local Tab = Window:CreateTab("Scripts", 4483362458)
+    
+    local scripts = {
+        ["KHA HUB"] = "https://rawscripts.net/raw/Silent-Strike-Cool-Script-Invisible-Slayer-Rounds-81109",
+        ["LEE HUB"] = "https://raw.githubusercontent.com/Harrry999/slientassin/refs/heads/main/slientassinbyLee.lua",
+        ["Wai Hub"] = "https://pastefy.app/MANSeU9k/raw?part=satthuthamlang.lua",
+        ["Zeus Hub"] = "https://raw.githubusercontent.com/adamzeus28-coder/khangtra/refs/heads/main/script.lua"
+    }
+
+    for name, url in pairs(scripts) do
+        Tab:CreateButton({Name = name, Callback = function() 
+            if name == "Zeus Hub" then setclipboard("Zeus_9p1biim16u") end
+            loadstring(game:HttpGet(url))() 
+        end})
+    end
+end
+
+-- [[ LOGIC ]]
+GetKeyBtn.MouseButton1Click:Connect(function()
+    -- Gọi API /getlink từ server Node.js của bạn
+    local success, shortLink = pcall(function()
+        return game:HttpGet(REPLIT_URL .. "/getlink?hwid=" .. playerHWID)
+    end)
+    setclipboard(success and shortLink or (REPLIT_URL .. "/?hwid=" .. playerHWID))
+    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "TLong Hub", Text = "Đã copy link vượt mã!"})
+end)
+
+KeyInput.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        local success, result = pcall(function()
+            return game:HttpGet(REPLIT_URL .. "/verify?key=" .. KeyInput.Text .. "&hwid=" .. playerHWID)
+        end)
+        if success and result == "true" then
+            ScreenGui:Destroy()
+            OpenMainHub() -- Mở Menu Silent Assassin
+        end
+    end
+end)
