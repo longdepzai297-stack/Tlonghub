@@ -9,7 +9,7 @@
 --       Dynamic Island nền đen và cơ chế chống giật ngôn ngữ VI/EN.
 -- ==============================================================================
 
-local MY_CHILLI_URL  = "https://raw.githubusercontent.com/ronnei/hihi/refs/heads/main/chillihubv5.lua"
+local MY_CHILLI_URL  = "https://raw.githubusercontent.com/Tlongdev-vn/ScriptXhub/refs/heads/main/Chilliv5.lua"
 local AUTO_RUN_FILE  = "ChilliHubV5_AutoRun.lua"
 local LANG_SAVE_FILE = "ChilliV5_Lang.txt"
 
@@ -19,7 +19,7 @@ local CHILLI_LOGO_ID = "rbxassetid://92622270383869"
 local LOGO_BG_COLOR = Color3.fromRGB(5, 7, 15)
 local ISLAND_BLACK_BG = Color3.fromRGB(0, 0, 0)
 
-local MY_CHILLI_URL  = "https://raw.githubusercontent.com/ronnei/hihi/refs/heads/main/chillihubv5.lua"
+local MY_CHILLI_URL  = "https://raw.githubusercontent.com/Tlongdev-vn/ScriptXhub/refs/heads/main/Chilliv5.lua"
 local AUTO_RUN_FILE  = "ChilliHubV5_AutoRun.lua"
 local LANG_SAVE_FILE = "ChilliV5_Lang.txt"
 
